@@ -1,0 +1,68 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'تسجيل الدخول | LibyShop',
+  description: 'سجل الدخول إلى حسابك في LibyShop أو أنشئ حساباً جديداً',
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
+export default function AuthLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-dark">
+      {/* Animated Background Layers */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Radial Glow - Top Right */}
+        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-gold/5 blur-[100px]" />
+        
+        {/* Radial Glow - Bottom Left */}
+        <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] rounded-full bg-gold/3 blur-[80px]" />
+        
+        {/* Center Subtle Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gold/[0.02] blur-[120px]" />
+        
+        {/* Grid Pattern */}
+        <div 
+          className="absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(197, 160, 89, 0.5) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(197, 160, 89, 0.5) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px',
+          }}
+        />
+        
+        {/* Floating Orbs */}
+        <div className="absolute top-[20%] left-[15%] w-2 h-2 rounded-full bg-gold/20 animate-bounce-subtle" style={{ animationDelay: '0s', animationDuration: '4s' }} />
+        <div className="absolute top-[40%] right-[20%] w-1.5 h-1.5 rounded-full bg-gold/15 animate-bounce-subtle" style={{ animationDelay: '1s', animationDuration: '5s' }} />
+        <div className="absolute bottom-[30%] left-[25%] w-1 h-1 rounded-full bg-gold/10 animate-bounce-subtle" style={{ animationDelay: '2s', animationDuration: '6s' }} />
+        <div className="absolute top-[60%] right-[15%] w-2.5 h-2.5 rounded-full bg-gold/10 animate-bounce-subtle" style={{ animationDelay: '0.5s', animationDuration: '7s' }} />
+      </div>
+
+      {/* Content Container */}
+      <div className="relative z-10 w-full max-w-md px-4 py-8 sm:px-6">
+        {/* Decorative Top Border */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-0.5 gold-gradient rounded-full opacity-60" />
+        
+        {children}
+        
+        {/* Decorative Bottom Border */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-0.5 bg-gold/20 rounded-full" />
+      </div>
+
+      {/* Bottom Branding */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
+        <p className="text-xs text-gray-600">
+          LibyShop © {new Date().getFullYear()} - منصة المتاجر الليبية
+        </p>
+      </div>
+    </div>
+  );
+}
